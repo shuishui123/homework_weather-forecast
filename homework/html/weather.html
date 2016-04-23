@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>天气预报</title>
+	<link rel="stylesheet" type="text/css" href="../css/weather.css">
+	<script src="../js/weather.js"></script>
+</head>
+<body>
+	<div class="container">
+		<ul id="slider">
+			<li class="block">
+				<div class="weather_container">
+					<div class="city_container">
+				    	<p class="city_word">
+				    		<span>Place：</span>
+				    		<span class="city"></span>
+				    	</p>
+				  		<hr>
+				    </div>
+
+				    <p class="date_container">
+				    	<span>Today is</span>
+				    	<span class="date"></span>
+				    </p>
+					<div class="weather_pic">
+						
+					</div>
+					<p class="state_container">
+						<span>weather:</span>
+						<span class="state"></span>
+					</p>
+					<p class="temp_container">
+						<span>temp:</span>
+						<span class="min"></span>
+						<span>~</span>
+						<span class="max"></span>
+					</p>
+				</div>
+			</li>
+			<li class="block">
+				<div class="weather_container">
+					<div class="city_container">
+				    	<p class="city_word">
+				    		<span>Place：</span>
+				    		<span class="city"></span>
+				    	</p>
+				  		<hr>
+				    </div>
+
+				    <p class="date_container">
+				    	<span>Today is</span>
+				    	<span class="date"></span>
+				    </p>
+					<div class="weather_pic">
+						
+					</div>
+					<p class="state_container">
+						<span>weather:</span>
+						<span class="state"></span>
+					</p>
+					<p class="temp_container">
+						<span>temp:</span>
+						<span class="min"></span>
+						<span>~</span>
+						<span class="max"></span>
+					</p>
+				</div>
+			</li>
+			<li class="block">
+				<div class="weather_container">
+					<div class="city_container">
+				    	<p class="city_word">
+				    		<span>Place：</span>
+				    		<span class="city"></span>
+				    	</p>
+				  		<hr>
+				    </div>
+
+				    <p class="date_container">
+				    	<span>Today is</span>
+				    	<span class="date"></span>
+				    </p>
+					<div class="weather_pic">
+						
+					</div>
+					<p class="state_container">
+						<span>weather:</span>
+						<span class="state"></span>
+					</p>
+					<p class="temp_container">
+						<span>temp:</span>
+						<span class="min"></span>
+						<span>~</span>
+						<span class="max"></span>
+					</p>
+				</div>
+			</li>
+			<li class="block">
+				<div class="weather_container">
+					<div class="city_container">
+				    	<p class="city_word">
+				    		<span>Place：</span>
+				    		<span class="city"></span>
+				    	</p>
+				  		<hr>
+				    </div>
+
+				    <p class="date_container">
+				    	<span>Today is</span>
+				    	<span class="date"></span>
+				    </p>
+					<div class="weather_pic">
+						
+					</div>
+					<p class="state_container">
+						<span>weather:</span>
+						<span class="state"></span>
+					</p>
+					<p class="temp_container">
+						<span>temp:</span>
+						<span class="min"></span>
+						<span>~</span>
+						<span class="max"></span>
+					</p>
+				</div>
+			</li>
+			<li class="block">
+				<div class="weather_container">
+					<div class="city_container">
+				    	<p class="city_word">
+				    		<span>Place：</span>
+				    		<span class="city"></span>
+				    	</p>
+				  		<hr>
+				    </div>
+
+				    <p class="date_container">
+				    	<span>Today is</span>
+				    	<span class="date"></span>
+				    </p>
+					<div class="weather_pic">
+						
+					</div>
+					<p class="state_container">
+						<span>weather:</span>
+						<span class="state"></span>
+					</p>
+					<p class="temp_container">
+						<span>temp:</span>
+						<span class="min"></span>
+						<span>~</span>
+						<span class="max"></span>
+					</p>
+				</div>
+			</li>			
+		</ul>
+
+	</div>
+		<ul id="list">
+			<li class="button_list">1</li>
+			<li class="button_list">2</li>
+			<li class="button_list">3</li>
+			<li class="button_list">4</li>
+			<li class="button_list">5</li>
+			
+		</ul>
+
+	<script>
+	  var pic = document.querySelector('#slider');
+	  var sign = document.querySelectorAll('#list li');  
+	  var flag = 0;
+	  var num = sign.length;
+	  
+	  sign[0].style.backgroundColor = "#ccc";
+	  time = setInterval("turn();",3000);
+	  pic.onmouseover = function () {
+	  	clearInterval(time);
+	  }
+	  pic.onmouseout = function () {
+	  	time = setInterval("turn();",3000);
+	  }
+	  for(var t = 0; t < num; t++) {
+	  	sign[t].onmouseover = function () {
+	  		turn(this.innerHTML);
+	  		clearInterval(time);
+	  	}
+	  	sign[t].onmouseout = function () {
+	  		time = setInterval("turn();",3000);
+	  	}
+	  }
+
+	  function turn(value) {
+	  	if(value != null) {
+	  		flag = value - 2;
+	  	}
+	  	if(flag < num - 1) 
+	  		flag++;
+	  	
+	  	else 
+	  		flag = 0;
+	  	
+	  	pic.style.top = flag * (-800) + "px";
+	  	for(var i = 0; i < num; i ++) {
+	  		sign[i].style.backgroundColor = '#fff';
+	  	}
+	  	sign[flag].style.backgroundColor = '#ccc';
+	  }
+
+
+	</script>
+
+</body>
+</html>
